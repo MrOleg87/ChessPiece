@@ -10,11 +10,14 @@ public class Horse extends ChessPiece{
             if (!(line == toLine && column == toColumn)) {
                 if (!(line == toLine ^ column == toColumn)
                         && (Math.abs(toLine - line) <= 2 && Math.abs(toColumn - column) <= 2)) {
+                    if (chessBoard.board[toLine][toColumn] != null) {
+                        return !chessBoard.board[toLine][toColumn].getColor().equals(color);
+                    }
                     return true;
                 } else return false;
+                } else return false;
             } else return false;
-        } else return false;
-    }
+        }
     public String getSymbol(){
         return "H";
     }
