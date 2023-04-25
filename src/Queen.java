@@ -9,11 +9,15 @@ public class Queen extends ChessPiece{
         if ((toLine < 8 && toLine >= 0) && (toColumn < 8 && toColumn >= 0)) {
             if (!(line == toLine && column == toColumn)) {
                 if ((Math.abs(toLine - line) == Math.abs(toColumn - column)) || (line == toLine || column == toColumn)){
-                    return true;
+                    if (chessBoard.board[toLine][toColumn] != null) {
+                        if (chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] != this)
+                            return false;
+                        else return !chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] != this;
+                    } else return true;
+                } else return false;
+            } else return false;
                 }else return false;
-            }else return false;
-        } else return true;
-    }
+            }
     public String getSymbol() {
         return "Q";
     }
