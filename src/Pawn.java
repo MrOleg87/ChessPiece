@@ -1,10 +1,12 @@
-public class Pawn extends ChessPiece{
-    public Pawn(String color){
+public class Pawn extends ChessPiece {
+    public Pawn(String color) {
         super(color);
     }
-    public String getColor(){
+
+    public String getColor() {
         return color;
     }
+
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         int paw;
         int startPos;
@@ -19,14 +21,15 @@ public class Pawn extends ChessPiece{
             if (!(line == toLine && column == toColumn)) {
                 if (column == toColumn) {
                     if (line + 2 * paw == toLine && line == startPos) {
+                        if (chessBoard.board[toLine][toColumn] != null) {
+                            return !chessBoard.board[toLine][toColumn].getColor().equals(color);
+                        }
                         return true;
-                    } else {
-                        return line + paw == toLine;
-                    }
+                    } else return line + paw == toLine;
                 } else return false;
-            } else return false;
         } else return false;
-    }
+    } else return false;
+}
 
     public String getSymbol() {
         return "P";
