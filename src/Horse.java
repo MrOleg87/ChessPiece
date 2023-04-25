@@ -8,7 +8,7 @@ public class Horse extends ChessPiece{
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if ((toLine < 8 && toLine >=0) && (toColumn < 8 && toColumn >= 0)) {
             if (!(line == toLine && column == toColumn)) {
-                if (!(line == toLine ^ column == toColumn)
+                if ((line == toLine ^ column == toColumn)
                         && (Math.abs(toLine - line) <= 2 && Math.abs(toColumn - column) <= 2)) {
                     if (chessBoard.board[toLine][toColumn] != null) {
                         return !chessBoard.board[toLine][toColumn].getColor().equals(color);
